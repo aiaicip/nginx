@@ -154,5 +154,5 @@ echo "BYE"
 echo "PLEASE REBOOT TO TAKE EFFECT"
 echo "TYPE reboot THEN ENTER "
 cat /dev/null > ~/.bash_history && history -c
-rm *.sh
+rm -f /root/ngn.sh
 
