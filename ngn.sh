@@ -105,17 +105,17 @@ service exim4 stop;sysv-rc-conf exim4 off
 apt-get -y install nginx php5-fpm php5-cli libexpat1-dev libxml-parser-perl
 rm /etc/nginx/sites-enabled/default
 rm /etc/nginx/sites-available/default
-wget -O /etc/nginx/nginx.conf "http://139.59.237.30/script/nginx.conf"
+wget -O /etc/nginx/nginx.conf "https://raw.githubusercontent.com/aiaicip/tong8/master/script/nginx.conf"
 mkdir -p /home/vps/public_html
 echo "<pre>Assalamualaikum | Setup by abangG | telegram @TogaSinki</pre>" > /home/vps/public_html/index.php
 echo "<?php phpinfo(); ?>" > /home/vps/public_html/info.php
-wget -O /etc/nginx/conf.d/vps.conf "http://139.59.237.30/script/vps.conf"
+wget -O /etc/nginx/conf.d/vps.conf "https://raw.githubusercontent.com/aiaicip/tong8/master/script/vps.conf"
 sed -i 's/listen = \/var\/run\/php5-fpm.sock/listen = 127.0.0.1:9000/g' /etc/php5/fpm/pool.d/www.conf
 
 # etc
-wget -O /home/vps/public_html/client.ovpn "http://139.59.237.30/script/client.ovpn"
+wget -O /home/vps/public_html/client.ovpn "https://raw.githubusercontent.com/aiaicip/tong8/master/script/client.ovpn"
 sed -i "s/ipserver/$myip/g" /home/vps/public_html/client.ovpn
-cd;wget http://139.59.237.30/script/cronjob.tar
+cd;wget https://raw.githubusercontent.com/aiaicip/tong8/master/script/cronjob.tar
 tar xf cronjob.tar;mv uptime.php /home/vps/public_html/
 mv usertol userssh uservpn /usr/bin/;mv cronvpn cronssh /etc/cron.d/
 chmod +x /usr/bin/usertol;chmod +x /usr/bin/userssh;chmod +x /usr/bin/uservpn;
@@ -132,7 +132,7 @@ service fail2ban restart
 cd
 
 #swap ram
-wget http://139.59.237.30/script/swap-ram.sh
+wget https://raw.githubusercontent.com/aiaicip/tong8/master/script/swap-ram.sh
 chmod +x  swap-ram.sh
 ./swap-ram.sh
 
@@ -161,5 +161,5 @@ echo "BYE"
 echo "PLEASE REBOOT TO TAKE EFFECT"
 echo "TYPE reboot THEN ENTER "
 cat /dev/null > ~/.bash_history && history -c
-rm -f /root/ngn.sh
+rm *.sh
 
